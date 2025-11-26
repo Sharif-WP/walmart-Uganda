@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Walmart Uganda Online Store</title>
+    <meta name="description" content="Browse all products at Walmart Uganda. Electronics, fashion, home appliances, groceries, and more with best prices and fast delivery.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/product-card.css">
+    <link rel="stylesheet" href="assets/css/components/forms.css">
+    <link rel="stylesheet" href="assets/css/pages/shop.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input" value="">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="login.html" class="auth-btn" id="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="auth-text">Login</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                            <a href="category.html?cat=grocery">Groceries</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Shop Header -->
+        <section class="shop-header">
+            <div class="container">
+                <h1 class="shop-title">All Products</h1>
+                <p class="shop-subtitle" id="products-count">Loading products...</p>
+            </div>
+        </section>
+
+        <!-- Shop Content -->
+        <section class="shop-content">
+            <div class="container">
+                <div class="shop-filters">
+                    <!-- Filter Sidebar -->
+                    <aside class="filter-sidebar">
+                        <div class="filter-form">
+                            <!-- Price Filter -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Price Range</h4>
+                                <div class="price-filter">
+                                    <input type="range" min="0" max="1000" value="1000" class="price-slider" id="price-slider">
+                                    <div class="range-values">
+                                        <span>$0</span>
+                                        <span>$1000</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Categories Filter -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Categories</h4>
+                                <div class="filter-options">
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="category" value="electronics"> Electronics
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="category" value="fashion"> Fashion
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="category" value="home"> Home & Kitchen
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="category" value="grocery"> Groceries
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Brand Filter -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Brand</h4>
+                                <div class="filter-options">
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="brand" value="samsung"> Samsung
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="brand" value="apple"> Apple
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="brand" value="nike"> Nike
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="brand" value="adidas"> Adidas
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Rating Filter -->
+                            <div class="filter-group">
+                                <h4 class="filter-title">Customer Rating</h4>
+                                <div class="filter-options">
+                                    <label class="filter-option">
+                                        <input type="radio" name="rating" value="4"> 4★ & above
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="radio" name="rating" value="3"> 3★ & above
+                                    </label>
+                                    <label class="filter-option">
+                                        <input type="radio" name="rating" value="2"> 2★ & above
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Filter Actions -->
+                            <div class="filter-actions">
+                                <button class="btn-apply-filters" onclick="applyFilters()">Apply Filters</button>
+                                <button class="btn-clear-filters" onclick="clearFilters()">Clear All</button>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="shop-main">
+                    <!-- Shop Controls -->
+                    <div class="shop-controls">
+                        <div class="shop-results" id="results-info">Showing all products</div>
+                        <div class="shop-sort">
+                            <label for="sort-select">Sort by:</label>
+                            <select id="sort-select" onchange="sortProducts(this.value)">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name: A to Z</option>
+                                <option value="newest">Newest First</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+                        <div class="view-controls">
+                            <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" onclick="changeView('list')">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded dynamically -->
+                        <div class="products-loading">
+                            <!-- Skeleton loading will be shown here -->
+                        </div>
+                    </div>
+
+                    <!-- No Results -->
+                    <div class="no-results" id="no-results" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search or filter criteria</p>
+                        <button class="btn-clear-filters" onclick="clearFilters()">Clear All Filters</button>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/utils/validators.js"></script>
+    <script src="assets/js/modules/cart-manager.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/modules/product-display.js"></script>
+    <script src="assets/js/modules/search-filter.js"></script>
+    <script src="assets/js/pages/shop.js"></script>
+</body>
+</html>

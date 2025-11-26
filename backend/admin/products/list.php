@@ -1,0 +1,3 @@
+<?php
+// Admin products list placeholder
+?><!doctype html><html><head><meta charset="utf-8"><title>Products</title></head><body><h1>Products</h1></body></html>

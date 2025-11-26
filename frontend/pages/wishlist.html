@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - Walmart Uganda</title>
+    <meta name="description" content="View and manage your wishlist at Walmart Uganda. Save your favorite products for later and get notified about price drops.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/product-card.css">
+    <link rel="stylesheet" href="assets/css/pages/wishlist.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="user-dashboard.html" class="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="user-name">My Account</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="wishlist-page">
+            <div class="container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">My Wishlist</h1>
+                    <p class="page-subtitle">Save items you love for later</p>
+                </div>
+
+                <!-- Wishlist Actions -->
+                <div class="wishlist-actions">
+                    <div class="wishlist-info">
+                        <span id="wishlist-count">0 items</span>
+                        <span class="wishlist-save">Save for later and get price drop notifications</span>
+                    </div>
+                    <div class="wishlist-buttons">
+                        <button class="btn-clear-wishlist" onclick="clearWishlist()">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                        <button class="btn-share-wishlist" onclick="shareWishlist()">
+                            <i class="fas fa-share"></i>
+                            Share Wishlist
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wishlist Content -->
+                <div class="wishlist-content">
+                    <!-- Wishlist Items Grid -->
+                    <div class="wishlist-grid" id="wishlist-grid">
+                        <!-- Wishlist items will be loaded dynamically -->
+
+                        <!-- Sample Wishlist Item -->
+                        <div class="wishlist-item" data-product-id="1">
+                            <div class="item-image">
+                                <img src="assets/images/products/laptop-pro-15-thumb1.jpg" alt="Laptop Pro 15">
+                                <button class="btn-remove-wishlist" onclick="removeFromWishlist(1)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="item-details">
+                                <h3 class="item-name">
+                                    <a href="product-detail.html?id=1">Laptop Pro 15 - High Performance Laptop with 16GB RAM</a>
+                                </h3>
+                                <div class="item-category">Electronics / Laptops</div>
+                                <div class="item-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="review-count">(128 reviews)</span>
+                                </div>
+                                <div class="item-price">
+                                    <span class="current-price">$1,299.99</span>
+                                    <span class="original-price">$1,499.99</span>
+                                    <span class="discount">Save $200</span>
+                                </div>
+                                <div class="item-stock in-stock">
+                                    <i class="fas fa-check-circle"></i> In Stock
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="btn-add-to-cart" onclick="addToCartFromWishlist(1)">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Add to Cart
+                                </button>
+                                <button class="btn-buy-now" onclick="buyNowFromWishlist(1)">
+                                    Buy Now
+                                </button>
+                                <div class="price-alert">
+                                    <label class="price-alert-toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                        Price Alert
+                                    </label>
+                                    <div class="price-alert-text">Get notified when price drops</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty Wishlist State -->
+                    <div class="empty-wishlist" id="empty-wishlist" style="display: none;">
+                        <div class="empty-state">
+                            <i class="fas fa-heart"></i>
+                            <h3>Your wishlist is empty</h3>
+                            <p>Save items you love to your wishlist for easy access and price drop notifications</p>
+                            <div class="empty-actions">
+                                <a href="shop.html" class="cta-button">Browse Products</a>
+                                <a href="deals.html" class="btn-secondary">View Today's Deals</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="wishlist-loading" id="wishlist-loading">
+                        <div class="loading-grid">
+                            <div class="product-card-skeleton"></div>
+                            <div class="product-card-skeleton"></div>
+                            <div class="product-card-skeleton"></div>
+                            <div class="product-card-skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed -->
+                <section class="recently-viewed-section">
+                    <div class="section-header">
+                        <h2>Recently Viewed</h2>
+                        <a href="shop.html" class="view-all-link">View All</a>
+                    </div>
+                    <div class="products-grid" id="recently-viewed-products">
+                        <!-- Recently viewed products will be loaded dynamically -->
+                    </div>
+                </section>
+
+                <!-- Recommendations -->
+                <section class="recommendations-section">
+                    <div class="section-header">
+                        <h2>You Might Also Like</h2>
+                        <p>Based on your wishlist items</p>
+                    </div>
+                    <div class="products-grid" id="recommendations-grid">
+                        <!-- Recommended products will be loaded dynamically -->
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- Share Wishlist Modal -->
+    <div class="modal" id="share-wishlist-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share Your Wishlist</h3>
+                <button class="modal-close" onclick="closeShareModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-link">
+                        <label>Wishlist Link</label>
+                        <div class="link-container">
+                            <input type="text" id="wishlist-link" readonly>
+                            <button onclick="copyWishlistLink()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="social-share">
+                        <button class="btn-share-facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Share on Facebook
+                        </button>
+                        <button class="btn-share-twitter">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </button>
+                        <button class="btn-share-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Share on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/modules/wishlist-manager.js"></script>
+    <script src="assets/js/modules/cart-manager.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/modules/product-display.js"></script>
+    <script src="assets/js/pages/wishlist.js"></script>
+</body>
+</html>

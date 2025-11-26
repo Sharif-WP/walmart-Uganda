@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Walmart Uganda</title>
+    <meta name="description" content="Login to your Walmart Uganda account to access your orders, wishlist, and personalized recommendations.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/forms.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="login.html" class="auth-btn active">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="auth-page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <!-- Auth Header -->
+                    <div class="auth-header">
+                        <div class="auth-logo">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h1>Walmart Uganda</h1>
+                        </div>
+                        <h2 class="auth-title">Welcome Back</h2>
+                        <p class="auth-subtitle">Sign in to your account to continue shopping</p>
+                    </div>
+
+                    <!-- Auth Messages -->
+                    <div class="auth-message error" id="error-message" style="display: none;"></div>
+                    <div class="auth-message success" id="success-message" style="display: none;"></div>
+
+                    <!-- Login Form -->
+                    <form class="auth-form" id="login-form">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <div class="form-text error" id="email-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <div class="password-toggle">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="form-text error" id="password-error"></div>
+                        </div>
+
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember-me" name="remember-me">
+                                <label for="remember-me">Remember me</label>
+                            </div>
+                            <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-auth" id="login-btn">
+                            <span id="login-text">Sign In</span>
+                            <div class="loading-spinner" id="login-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Social Login -->
+                    <div class="auth-divider">
+                        <span>Or continue with</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <a href="#" class="btn-social google">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </a>
+                        <a href="#" class="btn-social facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Continue with Facebook
+                        </a>
+                    </div>
+
+                    <!-- Auth Footer -->
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="register.html">Create one here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/utils/validators.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/pages/login.js"></script>
+</body>
+</html>

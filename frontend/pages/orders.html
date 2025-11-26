@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Walmart Uganda</title>
+    <meta name="description" content="View and track your orders at Walmart Uganda. Check order status, track shipments, and manage your purchases.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/forms.css">
+    <link rel="stylesheet" href="assets/css/pages/orders.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="user-dashboard.html" class="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="user-name">My Account</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="orders-page">
+            <div class="container">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h1 class="page-title">My Orders</h1>
+                    <p class="page-subtitle">Track and manage your purchases</p>
+                </div>
+
+                <!-- Orders Filter -->
+                <div class="orders-filter">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-status="all">All Orders</button>
+                        <button class="filter-tab" data-status="pending">Pending</button>
+                        <button class="filter-tab" data-status="processing">Processing</button>
+                        <button class="filter-tab" data-status="shipped">Shipped</button>
+                        <button class="filter-tab" data-status="delivered">Delivered</button>
+                        <button class="filter-tab" data-status="cancelled">Cancelled</button>
+                    </div>
+
+                    <div class="filter-actions">
+                        <div class="search-orders">
+                            <input type="text" placeholder="Search orders..." id="order-search">
+                            <button onclick="searchOrders()"><i class="fas fa-search"></i></button>
+                        </div>
+                        <select id="sort-orders" onchange="sortOrders()">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="price-high">Total: High to Low</option>
+                            <option value="price-low">Total: Low to High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Orders List -->
+                <div class="orders-list" id="orders-list">
+                    <!-- Orders will be loaded dynamically -->
+
+                    <!-- Order Card Example -->
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <div class="order-id">Order #WU-2024-001234</div>
+                                <div class="order-date">Placed on January 15, 2024</div>
+                            </div>
+                            <div class="order-total">$1,299.99</div>
+                        </div>
+
+                        <div class="order-status-badge delivered">
+                            <i class="fas fa-check-circle"></i>
+                            Delivered on January 18, 2024
+                        </div>
+
+                        <div class="order-items">
+                            <div class="order-item">
+                                <div class="item-image">
+                                    <img src="assets/images/products/laptop-pro-15-thumb1.jpg" alt="Laptop Pro 15">
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Laptop Pro 15 - High Performance Laptop</h4>
+                                    <div class="item-sku">SKU: LAPTOP-001</div>
+                                    <div class="item-price">$1,299.99</div>
+                                    <div class="item-quantity">Quantity: 1</div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="btn-action" onclick="buyAgain(1)">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Buy Again
+                                    </button>
+                                    <button class="btn-action" onclick="viewProduct(1)">
+                                        <i class="fas fa-eye"></i>
+                                        View Product
+                                    </button>
+                                    <button class="btn-action" onclick="writeReview(1)">
+                                        <i class="fas fa-star"></i>
+                                        Write Review
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-actions">
+                            <button class="btn-track-order" onclick="trackOrder('WU-2024-001234')">
+                                <i class="fas fa-shipping-fast"></i>
+                                Track Order
+                            </button>
+                            <button class="btn-download-invoice" onclick="downloadInvoice('WU-2024-001234')">
+                                <i class="fas fa-download"></i>
+                                Download Invoice
+                            </button>
+                            <button class="btn-contact-support" onclick="contactSupport('WU-2024-001234')">
+                                <i class="fas fa-headset"></i>
+                                Contact Support
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-orders" id="empty-orders" style="display: none;">
+                    <div class="empty-state">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>No orders yet</h3>
+                        <p>When you place orders, they will appear here</p>
+                        <a href="shop.html" class="cta-button">Start Shopping</a>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="orders-loading" id="orders-loading">
+                    <div class="loading-skeleton">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-status"></div>
+                        <div class="skeleton-items">
+                            <div class="skeleton-item"></div>
+                            <div class="skeleton-item"></div>
+                        </div>
+                        <div class="skeleton-actions"></div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="orders-pagination">
+                    <button class="pagination-btn disabled">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/modules/order-manager.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/pages/orders.js"></script>
+</body>
+</html>

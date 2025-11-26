@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Uganda - Online Shopping</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/components/header.css">
+    <link rel="stylesheet" href="../assets/css/components/footer.css">
+    <link rel="stylesheet" href="../assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="../assets/css/utilities/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products, brands, and categories..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="login.html" class="auth-btn" id="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="auth-text">Login</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="navbar" id="navbar">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                            <a href="category.html?cat=grocery">Groceries</a>
+                            <a href="category.html?cat=beauty">Beauty</a>
+                            <a href="category.html?cat=sports">Sports</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- External JavaScript Files -->
+    <script src="../assets/js/utils/helpers.js"></script>
+    <script src="../assets/js/utils/api-client.js"></script>
+    <script src="../assets/js/modules/cart-manager.js"></script>
+    <script src="../assets/js/modules/auth-handler.js"></script>
+    <script src="../assets/js/components/header.js"></script>
+</body>
+</html>

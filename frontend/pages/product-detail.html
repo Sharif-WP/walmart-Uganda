@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Pro 15 - High Performance Laptop | Walmart Uganda</title>
+    <meta name="description" content="Buy Laptop Pro 15 with 16GB RAM, 1TB SSD, and dedicated graphics. Best price guarantee, fast delivery in Uganda.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/product-card.css">
+    <link rel="stylesheet" href="assets/css/pages/product-detail.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="login.html" class="auth-btn" id="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="auth-text">Login</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <div class="container">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="shop.html">Electronics</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="category.html?cat=laptops">Laptops</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Laptop Pro 15</span>
+            </div>
+        </nav>
+
+        <!-- Product Detail -->
+        <section class="product-detail">
+            <div class="container">
+                <div class="product-detail-content" id="product-detail-content">
+                    <!-- Product Gallery -->
+                    <div class="product-gallery">
+                        <div class="product-main-image">
+                            <img src="assets/images/products/laptop-pro-15-main.jpg" alt="Laptop Pro 15" id="main-product-image">
+                            <div class="image-zoom" style="display: none;"></div>
+                        </div>
+                        <div class="product-thumbnails">
+                            <div class="product-thumbnail active" onclick="changeProductImage('assets/images/products/laptop-pro-15-main.jpg')">
+                                <img src="assets/images/products/laptop-pro-15-thumb1.jpg" alt="Laptop Front View">
+                            </div>
+                            <div class="product-thumbnail" onclick="changeProductImage('assets/images/products/laptop-pro-15-angle.jpg')">
+                                <img src="assets/images/products/laptop-pro-15-thumb2.jpg" alt="Laptop Side View">
+                            </div>
+                            <div class="product-thumbnail" onclick="changeProductImage('assets/images/products/laptop-pro-15-back.jpg')">
+                                <img src="assets/images/products/laptop-pro-15-thumb3.jpg" alt="Laptop Back View">
+                            </div>
+                            <div class="product-thumbnail" onclick="changeProductImage('assets/images/products/laptop-pro-15-screen.jpg')">
+                                <img src="assets/images/products/laptop-pro-15-thumb4.jpg" alt="Laptop Screen">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="product-info">
+                        <div class="product-category">Electronics / Laptops</div>
+                        <h1 class="product-title" id="product-title">Laptop Pro 15 - High Performance Laptop with 16GB RAM</h1>
+
+                        <div class="product-rating">
+                            <div class="product-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="product-reviews">128 Reviews</span>
+                            <a href="#reviews" class="review-link">Write a Review</a>
+                        </div>
+
+                        <div class="product-price">
+                            <div class="product-current-price">$1,299.99</div>
+                            <div class="product-original-price">$1,499.99</div>
+                            <div class="product-discount">Save $200 (13%)</div>
+                        </div>
+
+                        <div class="product-description">
+                            <p>Experience unparalleled performance with the Laptop Pro 15. Designed for professionals, creators, and gamers who demand the best. Features a stunning 15.6" 4K display, powerful Intel Core i7 processor, and dedicated NVIDIA graphics.</p>
+                        </div>
+
+                        <!-- Product Variants -->
+                        <div class="product-variants">
+                            <div class="variant-group">
+                                <label class="variant-label">Color:</label>
+                                <div class="variant-options">
+                                    <div class="variant-option active" data-variant="silver">Silver</div>
+                                    <div class="variant-option" data-variant="space-gray">Space Gray</div>
+                                    <div class="variant-option" data-variant="midnight-blue">Midnight Blue</div>
+                                </div>
+                            </div>
+                            <div class="variant-group">
+                                <label class="variant-label">Storage:</label>
+                                <div class="variant-options">
+                                    <div class="variant-option" data-variant="512gb">512GB SSD</div>
+                                    <div class="variant-option active" data-variant="1tb">1TB SSD</div>
+                                    <div class="variant-option" data-variant="2tb">2TB SSD</div>
+                                </div>
+                            </div>
+                            <div class="variant-group">
+                                <label class="variant-label">RAM:</label>
+                                <div class="variant-options">
+                                    <div class="variant-option" data-variant="8gb">8GB</div>
+                                    <div class="variant-option active" data-variant="16gb">16GB</div>
+                                    <div class="variant-option" data-variant="32gb">32GB</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <label class="quantity-label">Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" class="quantity-input" id="quantity-input" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                            <div class="stock-info">
+                                <span class="stock-status in-stock"><i class="fas fa-check-circle"></i> In Stock</span>
+                                <span class="stock-quantity">(50 available)</span>
+                            </div>
+                        </div>
+
+                        <!-- Product Actions -->
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart" onclick="addToCartFromDetail()">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow()">
+                                Buy Now
+                            </button>
+                            <button class="btn-wishlist" onclick="toggleWishlistDetail()">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Meta -->
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Free delivery in Kampala (1-2 days)</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-undo"></i>
+                                <span>30-day return policy</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>2-year warranty included</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Secure payment options</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Tabs -->
+                <div class="product-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchTab('description')">Description</button>
+                        <button class="tab-btn" onclick="switchTab('specifications')">Specifications</button>
+                        <button class="tab-btn" onclick="switchTab('reviews')">Reviews (128)</button>
+                        <button class="tab-btn" onclick="switchTab('shipping')">Shipping & Returns</button>
+                    </div>
+
+                    <div class="tab-content active" id="description-tab">
+                        <h3>Product Description</h3>
+                        <p>The Laptop Pro 15 is engineered for those who refuse to compromise. Whether you're editing 4K video, developing complex applications, or gaming at the highest settings, this laptop delivers exceptional performance.</p>
+
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>15.6" 4K Ultra HD IPS Display with 100% sRGB color gamut</li>
+                            <li>Intel Core i7-11800H Processor (8 cores, 16 threads)</li>
+                            <li>NVIDIA GeForce RTX 3060 6GB GDDR6 Graphics</li>
+                            <li>16GB DDR4 3200MHz RAM (Expandable to 32GB)</li>
+                            <li>1TB NVMe PCIe SSD Storage</li>
+                            <li>Thunderbolt 4, USB-C, HDMI 2.1, and SD Card Reader</li>
+                            <li>Backlit Keyboard with RGB Lighting</li>
+                            <li>Windows 11 Pro Pre-installed</li>
+                            <li>Up to 8 hours battery life</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="specifications-tab">
+                        <h3>Technical Specifications</h3>
+                        <table class="specs-table">
+                            <tr><th>Processor</th><td>Intel Core i7-11800H (2.3GHz, up to 4.6GHz)</td></tr>
+                            <tr><th>Display</th><td>15.6" 4K UHD (3840 x 2160) IPS, 60Hz</td></tr>
+                            <tr><th>Graphics</th><td>NVIDIA GeForce RTX 3060 6GB GDDR6</td></tr>
+                            <tr><th>Memory</th><td>16GB DDR4 3200MHz (2 x 8GB)</td></tr>
+                            <tr><th>Storage</th><td>1TB NVMe PCIe SSD</td></tr>
+                            <tr><th>Operating System</th><td>Windows 11 Pro</td></tr>
+                            <tr><th>Connectivity</th><td>Wi-Fi 6, Bluetooth 5.2</td></tr>
+                            <tr><th>Ports</th><td>2x USB-C (Thunderbolt 4), 2x USB 3.2, HDMI 2.1, SD Card Reader</td></tr>
+                            <tr><th>Battery</th><td>86Wh Li-Polymer, Up to 8 hours</td></tr>
+                            <tr><th>Weight</th><td>2.1 kg (4.63 lbs)</td></tr>
+                            <tr><th>Dimensions</th><td>35.8 x 24.2 x 1.99 cm</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="reviews-tab">
+                        <h3>Customer Reviews</h3>
+                        <div class="reviews-summary">
+                            <div class="overall-rating">
+                                <div class="rating-score">4.5</div>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="rating-count">Based on 128 reviews</div>
+                            </div>
+                            <div class="rating-bars">
+                                <!-- Rating distribution bars would go here -->
+                            </div>
+                        </div>
+                        <button class="btn-write-review" onclick="openReviewModal()">Write a Review</button>
+
+                        <div class="reviews-list">
+                            <!-- Reviews would be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="shipping-tab">
+                        <h3>Shipping & Returns</h3>
+                        <h4>Shipping Information:</h4>
+                        <ul>
+                            <li>Free standard shipping within Kampala (1-2 business days)</li>
+                            <li>Express shipping available (same day delivery in Kampala)</li>
+                            <li>Nationwide shipping to all major cities in Uganda (2-5 business days)</li>
+                            <li>International shipping available upon request</li>
+                        </ul>
+
+                        <h4>Return Policy:</h4>
+                        <ul>
+                            <li>30-day money-back guarantee</li>
+                            <li>Free returns for defective products</li>
+                            <li>Products must be in original condition with all accessories</li>
+                            <li>Return shipping fees may apply for non-defective returns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Related Products -->
+                <section class="related-products">
+                    <h2>You May Also Like</h2>
+                    <div class="products-grid" id="related-products">
+                        <!-- Related products will be loaded dynamically -->
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/utils/validators.js"></script>
+    <script src="assets/js/modules/cart-manager.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/modules/wishlist-manager.js"></script>
+    <script src="assets/js/modules/product-display.js"></script>
+    <script src="assets/js/pages/product-detail.js"></script>
+</body>
+</html>

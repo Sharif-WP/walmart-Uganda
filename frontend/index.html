@@ -3,30 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Walmart Uganda - Your trusted online shopping destination">
-    <title>Walmart Uganda - Shop Online</title>
-    
-    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Walmart Uganda - Online Shopping for Electronics, Fashion, Home & More</title>
+    <meta name="description" content="Shop online at Walmart Uganda for electronics, fashion, home appliances, groceries, and more. Best prices, fast delivery, and excellent customer service.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/product-card.css">
+    <link rel="stylesheet" href="assets/css/pages/home.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header"></div>
-    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products, brands, and categories..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="login.html" class="auth-btn" id="auth-btn">
+                        <i class="fas fa-user"></i>
+                        <span id="auth-text">Login</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                            <a href="category.html?cat=grocery">Groceries</a>
+                            <a href="category.html?cat=beauty">Beauty</a>
+                            <a href="category.html?cat=sports">Sports</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <!-- Main Content -->
     <main>
-        <div id="content"></div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Welcome to Walmart Uganda</h2>
+                    <p>Your one-stop shop for all your needs. Quality products, amazing prices, and excellent service.</p>
+                    <a href="shop.html" class="cta-button">Start Shopping</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="products-grid" id="featured-products">
+                    <!-- Products will be loaded dynamically -->
+                    <div class="products-loading">
+                        <!-- Skeleton loading will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="container">
+                <h2>Shop by Category</h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <i class="fas fa-laptop"></i>
+                        <h3>Electronics</h3>
+                        <p>Latest gadgets and devices</p>
+                        <a href="category.html?cat=electronics">Shop Now</a>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Fashion</h3>
+                        <p>Trendy clothes and accessories</p>
+                        <a href="category.html?cat=fashion">Shop Now</a>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Home & Kitchen</h3>
+                        <p>Everything for your home</p>
+                        <a href="category.html?cat=home">Shop Now</a>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Groceries</h3>
+                        <p>Fresh and packaged foods</p>
+                        <a href="category.html?cat=grocery">Shop Now</a>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>Beauty</h3>
+                        <p>Cosmetics and personal care</p>
+                        <a href="category.html?cat=beauty">Shop Now</a>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-basketball-ball"></i>
+                        <h3>Sports</h3>
+                        <p>Sports equipment and gear</p>
+                        <a href="category.html?cat=sports">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banners -->
+        <section class="promo-banners">
+            <div class="container">
+                <div class="banner-grid">
+                    <div class="promo-banner" style="background: linear-gradient(45deg, #0071ce, #4a9fea);">
+                        <div class="promo-banner-content">
+                            <h3>Summer Sale</h3>
+                            <p>Up to 50% off on selected items</p>
+                            <a href="deals.html" class="cta-button">Shop Sale</a>
+                        </div>
+                    </div>
+                    <div class="promo-banner" style="background: linear-gradient(45deg, #e31837, #ff6b8b);">
+                        <div class="promo-banner-content">
+                            <h3>New Arrivals</h3>
+                            <p>Discover the latest products</p>
+                            <a href="shop.html?sort=newest" class="cta-button">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter and get exclusive deals and updates</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
     </main>
-    
-    <!-- Footer Component -->
-    <div id="footer"></div>
-    
-    <!-- Scripts -->
-    <script src="assets/js/vendors/swiper-bundle.min.js"></script>
-    <script src="assets/js/vendors/zoom.min.js"></script>
-    <script src="assets/js/core/api-client.js"></script>
-    <script src="assets/js/core/utils.js"></script>
-    <script src="assets/js/core/notification-manager.js"></script>
-    <script src="assets/js/app/products/product-api.js"></script>
-    <script src="assets/js/app.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Walmart Uganda</h3>
+                    <p>Your trusted online shopping destination in Uganda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="category.html?cat=electronics">Electronics</a></li>
+                        <li><a href="category.html?cat=fashion">Fashion</a></li>
+                        <li><a href="category.html?cat=home">Home & Kitchen</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping-info.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+                    <p><i class="fas fa-envelope"></i> support@walmart.ug</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Walmart Uganda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/utils/validators.js"></script>
+    <script src="assets/js/modules/cart-manager.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/modules/product-display.js"></script>
+    <script src="assets/js/pages/home.js"></script>
 </body>
 </html>

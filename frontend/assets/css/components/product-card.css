@@ -1,0 +1,294 @@
+/* Product Card Styles */
+.product-card {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.product-card-badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    background: var(--accent-color);
+    color: var(--white);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    z-index: 1;
+}
+
+.product-card-image {
+    position: relative;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+    overflow: hidden;
+    background: var(--gray-100);
+}
+
+.product-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card-image img {
+    transform: scale(1.05);
+}
+
+.product-card-wishlist {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    background: var(--white);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow);
+}
+
+.product-card:hover .product-card-wishlist {
+    opacity: 1;
+}
+
+.product-card-wishlist:hover {
+    background: var(--accent-color);
+    color: var(--white);
+}
+
+.product-card-wishlist.active {
+    opacity: 1;
+    background: var(--accent-color);
+    color: var(--white);
+}
+
+.product-card-content {
+    padding: var(--space-4);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-category {
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-card-title {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-card-title a {
+    color: var(--gray-800);
+    text-decoration: none;
+}
+
+.product-card-title a:hover {
+    color: var(--primary-color);
+}
+
+.product-card-description {
+    color: var(--gray-600);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+    margin-bottom: var(--space-3);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+}
+
+.product-card-rating {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.product-card-stars {
+    color: var(--secondary-color);
+}
+
+.product-card-reviews {
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+}
+
+.product-card-pricing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.product-card-price {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.product-card-original-price {
+    font-size: var(--font-size-base);
+    color: var(--gray-500);
+    text-decoration: line-through;
+}
+
+.product-card-discount {
+    color: var(--success-color);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.product-card-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: auto;
+}
+
+.btn-add-to-cart {
+    flex: 1;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+}
+
+.btn-add-to-cart:hover {
+    background: var(--primary-dark);
+}
+
+.btn-add-to-cart.added {
+    background: var(--success-color);
+}
+
+.btn-quick-view {
+    background: var(--gray-200);
+    color: var(--gray-700);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-quick-view:hover {
+    background: var(--gray-300);
+}
+
+.product-card-stock {
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-2);
+}
+
+.product-card-stock.in-stock {
+    color: var(--success-color);
+}
+
+.product-card-stock.low-stock {
+    color: var(--warning-color);
+}
+
+.product-card-stock.out-of-stock {
+    color: var(--danger-color);
+}
+
+/* Product Grid Layout */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+}
+
+/* Skeleton Loading */
+.product-card-skeleton {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    height: 400px;
+}
+
+.skeleton-image {
+    height: 200px;
+    background: var(--gray-200);
+}
+
+.skeleton-content {
+    padding: var(--space-4);
+}
+
+.skeleton-line {
+    height: 12px;
+    background: var(--gray-200);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-line.short {
+    width: 60%;
+}
+
+.skeleton-line.medium {
+    width: 80%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .product-card-actions {
+        flex-direction: column;
+    }
+
+    .btn-quick-view {
+        width: 100%;
+    }
+}

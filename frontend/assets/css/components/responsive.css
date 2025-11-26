@@ -1,0 +1,5 @@
+/* Responsive rules (placeholder) */
+@media (max-width: 768px) {
+  .header-top { flex-direction: column; gap: 10px; }
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); }
+}

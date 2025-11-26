@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Walmart Uganda</title>
+    <meta name="description" content="Manage your Walmart Uganda account, view orders, update preferences, and track your purchases.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/utilities/variables.css">
+    <link rel="stylesheet" href="assets/css/utilities/animations.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/forms.css">
+    <link rel="stylesheet" href="assets/css/pages/user-dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><i class="fas fa-shopping-bag"></i> Walmart Uganda</h1>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." id="search-input">
+                    <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="user-dashboard.html" class="auth-btn active">
+                        <i class="fas fa-user"></i>
+                        <span id="user-name">My Account</span>
+                    </a>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">All Products</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="category.html?cat=electronics">Electronics</a>
+                            <a href="category.html?cat=fashion">Fashion</a>
+                            <a href="category.html?cat=home">Home & Kitchen</a>
+                        </div>
+                    </li>
+                    <li><a href="deals.html">Today's Deals</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="dashboard-page">
+            <div class="container">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">My Account</h1>
+                    <p class="dashboard-welcome" id="welcome-message">Welcome back!</p>
+                </div>
+
+                <div class="dashboard-content">
+                    <!-- Dashboard Sidebar -->
+                    <aside class="dashboard-sidebar">
+                        <div class="user-profile">
+                            <div class="user-avatar" id="user-avatar">
+                                <!-- User avatar will be loaded dynamically -->
+                            </div>
+                            <div class="user-name" id="display-user-name">Loading...</div>
+                            <div class="user-email" id="display-user-email">Loading...</div>
+                        </div>
+
+                        <nav class="dashboard-nav">
+                            <a href="#overview" class="nav-item active" onclick="switchDashboardTab('overview')">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <a href="#orders" class="nav-item" onclick="switchDashboardTab('orders')">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>My Orders</span>
+                            </a>
+                            <a href="#wishlist" class="nav-item" onclick="switchDashboardTab('wishlist')">
+                                <i class="fas fa-heart"></i>
+                                <span>Wishlist</span>
+                            </a>
+                            <a href="#addresses" class="nav-item" onclick="switchDashboardTab('addresses')">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Addresses</span>
+                            </a>
+                            <a href="#reviews" class="nav-item" onclick="switchDashboardTab('reviews')">
+                                <i class="fas fa-star"></i>
+                                <span>My Reviews</span>
+                            </a>
+                            <a href="#profile" class="nav-item" onclick="switchDashboardTab('profile')">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Profile Settings</span>
+                            </a>
+                            <a href="#" class="nav-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </nav>
+                    </aside>
+
+                    <!-- Dashboard Main Content -->
+                    <div class="dashboard-main">
+                        <!-- Overview Tab -->
+                        <div class="dashboard-tab active" id="overview-tab">
+                            <!-- Dashboard Stats -->
+                            <div class="dashboard-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon orders">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="stat-number" id="orders-count">0</div>
+                                    <div class="stat-label">Total Orders</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="stat-number" id="wishlist-count">0</div>
+                                    <div class="stat-label">Wishlist Items</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon reviews">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="stat-number" id="reviews-count">0</div>
+                                    <div class="stat-label">My Reviews</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon addresses">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="stat-number" id="addresses-count">0</div>
+                                    <div class="stat-label">Saved Addresses</div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Orders -->
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">Recent Orders</h3>
+                                    <a href="#orders" class="section-action" onclick="switchDashboardTab('orders')">
+                                        View All <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                                <div class="orders-list" id="recent-orders">
+                                    <!-- Recent orders will be loaded dynamically -->
+                                </div>
+                                <div class="no-orders" id="no-recent-orders" style="display: none;">
+                                    <p>You haven't placed any orders yet.</p>
+                                    <a href="shop.html" class="cta-button">Start Shopping</a>
+                                </div>
+                            </div>
+
+                            <!-- Account Summary -->
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">Account Summary</h3>
+                                </div>
+                                <div class="account-summary">
+                                    <div class="summary-item">
+                                        <i class="fas fa-user-circle"></i>
+                                        <div class="summary-info">
+                                            <div class="summary-label">Member Since</div>
+                                            <div class="summary-value" id="member-since">Loading...</div>
+                                        </div>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <div class="summary-info">
+                                            <div class="summary-label">Loyalty Points</div>
+                                            <div class="summary-value" id="loyalty-points">0 points</div>
+                                        </div>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-percentage"></i>
+                                        <div class="summary-info">
+                                            <div class="summary-label">Discount Level</div>
+                                            <div class="summary-value" id="discount-level">Standard (0%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orders Tab -->
+                        <div class="dashboard-tab" id="orders-tab">
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">My Orders</h3>
+                                    <div class="order-filters">
+                                        <select id="order-status-filter" onchange="filterOrders()">
+                                            <option value="all">All Orders</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="processing">Processing</option>
+                                            <option value="shipped">Shipped</option>
+                                            <option value="delivered">Delivered</option>
+                                            <option value="cancelled">Cancelled</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="orders-list" id="all-orders">
+                                    <!-- All orders will be loaded dynamically -->
+                                </div>
+                                <div class="no-orders" id="no-orders" style="display: none;">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <h3>No orders found</h3>
+                                    <p>Start shopping to see your orders here</p>
+                                    <a href="shop.html" class="cta-button">Start Shopping</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist Tab -->
+                        <div class="dashboard-tab" id="wishlist-tab">
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">My Wishlist</h3>
+                                    <button class="section-action" onclick="clearWishlist()">
+                                        <i class="fas fa-trash"></i> Clear All
+                                    </button>
+                                </div>
+                                <div class="wishlist-grid" id="wishlist-items">
+                                    <!-- Wishlist items will be loaded dynamically -->
+                                </div>
+                                <div class="wishlist-empty" id="empty-wishlist" style="display: none;">
+                                    <i class="fas fa-heart"></i>
+                                    <h3>Your wishlist is empty</h3>
+                                    <p>Add items you love to your wishlist for easy access</p>
+                                    <a href="shop.html" class="cta-button">Browse Products</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Addresses Tab -->
+                        <div class="dashboard-tab" id="addresses-tab">
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">Saved Addresses</h3>
+                                    <button class="section-action" onclick="openAddressModal()">
+                                        <i class="fas fa-plus"></i> Add New Address
+                                    </button>
+                                </div>
+                                <div class="addresses-grid" id="saved-addresses">
+                                    <!-- Saved addresses will be loaded dynamically -->
+                                </div>
+                                <div class="no-addresses" id="no-addresses" style="display: none;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <h3>No saved addresses</h3>
+                                    <p>Add your addresses for faster checkout</p>
+                                    <button class="cta-button" onclick="openAddressModal()">Add Address</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reviews Tab -->
+                        <div class="dashboard-tab" id="reviews-tab">
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">My Reviews</h3>
+                                </div>
+                                <div class="reviews-list" id="user-reviews">
+                                    <!-- User reviews will be loaded dynamically -->
+                                </div>
+                                <div class="no-reviews" id="no-reviews" style="display: none;">
+                                    <i class="fas fa-star"></i>
+                                    <h3>No reviews yet</h3>
+                                    <p>Review products you've purchased to help other shoppers</p>
+                                    <a href="orders.html" class="cta-button">View Orders</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Settings Tab -->
+                        <div class="dashboard-tab" id="profile-tab">
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">Profile Settings</h3>
+                                </div>
+                                <form class="profile-form" id="profile-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="profile-first-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="profile-last-name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="profile-email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="profile-phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="profile-dob">
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn-save-profile">Save Changes</button>
+                                        <button type="button" class="btn-change-password" onclick="openPasswordModal()">
+                                            Change Password
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Notification Preferences -->
+                            <div class="dashboard-section">
+                                <div class="section-header">
+                                    <h3 class="section-title">Notification Preferences</h3>
+                                </div>
+                                <div class="notification-preferences">
+                                    <div class="preference-item">
+                                        <input type="checkbox" id="email-notifications" checked>
+                                        <label for="email-notifications">Email notifications</label>
+                                    </div>
+                                    <div class="preference-item">
+                                        <input type="checkbox" id="sms-notifications">
+                                        <label for="sms-notifications">SMS notifications</label>
+                                    </div>
+                                    <div class="preference-item">
+                                        <input type="checkbox" id="promotional-emails" checked>
+                                        <label for="promotional-emails">Promotional emails</label>
+                                    </div>
+                                    <div class="preference-item">
+                                        <input type="checkbox" id="order-updates" checked>
+                                        <label for="order-updates">Order updates</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- External JavaScript Files -->
+    <script src="assets/js/utils/helpers.js"></script>
+    <script src="assets/js/utils/api-client.js"></script>
+    <script src="assets/js/utils/validators.js"></script>
+    <script src="assets/js/modules/auth-handler.js"></script>
+    <script src="assets/js/modules/cart-manager.js"></script>
+    <script src="assets/js/modules/wishlist-manager.js"></script>
+    <script src="assets/js/modules/order-manager.js"></script>
+    <script src="assets/js/pages/user-dashboard.js"></script>
+</body>
+</html>
