@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    container_name: walmart-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./backend/public:/var/www/public
+      - ./frontend:/var/www/frontend
+    depends_on:
+      - php
+    networks:
+      - walmart-network
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: walmart-php
+    volumes:
+      - ./backend:/var/www
+    working_dir: /var/www
+    networks:
+      - walmart-network
+
+  mysql:
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    container_name: walmart-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: walmart_uganda
+      MYSQL_USER: walmart
+      MYSQL_PASSWORD: walmart_password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./backend/database/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - walmart-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: walmart-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - walmart-network
+
+volumes:
+  mysql-data:
+
+networks:
+  walmart-network:
+    driver: bridge
